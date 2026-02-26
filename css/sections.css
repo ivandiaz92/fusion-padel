@@ -338,9 +338,11 @@
 /* Standalone divider (above Instalaciones) */
 .section-divider {
   display: block;
-  width: 100%;
+  position: relative;
+  left: -1px;
+  width: calc(100% + 2px); /* bleed 1px past each side – seals any sub-pixel gap at the edges */
   margin: 0;
-  margin-bottom: -3px; /* seal sub-pixel gap against the section below */
+  margin-bottom: -3px;
   padding: 0;
   line-height: 0;
   font-size: 0;

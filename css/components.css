@@ -186,7 +186,6 @@
   inset: 0;
   z-index: 50;
   background: #0f0f0f;
-  contain: strict; /* prevents off-screen panel from registering as page overflow */
   display: flex;
   flex-direction: column;
   padding: var(--space-8) var(--space-8) var(--space-8);
