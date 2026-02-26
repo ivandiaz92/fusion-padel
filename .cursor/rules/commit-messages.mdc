@@ -1,0 +1,9 @@
+---
+description: Never add "made with Cursor" or similar to commit messages
+alwaysApply: true
+---
+
+# Commit messages
+
+- **Never** include "made with Cursor", "made with Cursor AI", "built with Cursor", or any similar phrasing in git commit messages.
+- Keep commit messages factual and about the code change only (e.g. "Add contact form", "Fix coaches section layout").

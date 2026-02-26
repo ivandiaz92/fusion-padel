@@ -1,0 +1,84 @@
+/* Fusion Padel - Prototype design tokens (from image) */
+
+:root {
+  /* Dark theme (hero, instalaciones, consideraciones) */
+  --color-dark: #191919;
+  --color-dark-surface: #222;
+  --color-dark-elevated: #2a2a2a;
+
+  /* Light (services, membresías top, coaches) */
+  --color-beige: #EEEAE4;
+  --color-beige-warm: #f0ede8;
+  --color-services-bg: #EEEAE4;
+  --color-services-blue: #0040E7;
+  --color-proximamente: #ACCE3D;
+  --color-bg: #EEEAE4;
+
+  /* Accents - prototype */
+  --color-lime: #A1EA03;
+  --color-lime-hover: #b0f010;
+  --color-lime-text: #0f0f0f;
+  --color-blue: #2563eb;
+  --color-blue-bg: #2563eb;
+  --color-blue-light: #dbeafe;
+  --color-blue-dark: #1e40af;
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-muted: #6b7280;
+
+  /* Membership card backgrounds (prototype) */
+  --color-card-premium: #AFE423;
+  --color-card-estudiante: #2054A3;
+  --color-card-parejas: #0B4791;
+  --color-card-familiar: #363636;
+
+  /* Text */
+  --color-text: #0f0f0f;
+  --color-text-muted: #4b5563;
+  --color-text-on-dark: #ffffff;
+
+  /* Border */
+  --color-border: #e5e7eb;
+  --color-border-dark: rgba(255,255,255,0.12);
+
+  /* Typography – titles use Vegos (add fonts/Vegos.woff2) */
+  --font-display: 'Vegos', 'Outfit', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  --text-xs: clamp(0.75rem, 1.5vw, 0.8125rem);
+  --text-sm: clamp(0.8125rem, 1.6vw, 0.9375rem);
+  --text-base: clamp(0.9375rem, 1.8vw, 1rem);
+  --text-lg: clamp(1rem, 2vw, 1.125rem);
+  --text-xl: clamp(1.125rem, 2.5vw, 1.25rem);
+  --text-2xl: clamp(1.25rem, 3vw, 1.5rem);
+  --text-3xl: clamp(1.5rem, 4vw, 2rem);
+  --text-4xl: clamp(1.75rem, 5vw, 2.5rem);
+  --text-hero: clamp(1.75rem, 5vw + 0.5rem, 3rem);
+
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --container-max: 72rem;
+  --container-padding: clamp(1rem, 5vw, 2rem);
+  --header-height: 5.75rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-full: 9999px;
+
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration: 0.3s;
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+}

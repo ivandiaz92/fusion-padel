@@ -1,0 +1,46 @@
+/* Fusion Padel - Responsive (mobile-first fixes) */
+
+/* Small phones: touch targets, compact cards */
+@media (max-width: 23.4375em) {
+  .btn { min-height: 2.75rem; padding-inline: var(--space-5); }
+  .service-card__body,
+  .plan-card { padding: var(--space-6); }
+}
+
+/* Mobile: reduce dead space site-wide – tighter container padding */
+@media (max-width: 47.9375em) {
+  .container {
+    padding-inline: 1.25rem;
+  }
+  .header {
+    padding-inline: 1.25rem;
+  }
+  .header__inner {
+    padding-inline: 0;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: auto; padding-top: calc(var(--header-height) + var(--space-6)); padding-bottom: var(--space-12); }
+}
+
+@media (min-width: 30em) and (max-width: 63.9375em) {
+  .membresias__grid .plan-card--premium { grid-column: 1 / -1; max-width: 22rem; margin-inline: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+@media print {
+  .header, .nav-toggle, .hero__content .btn, .class-cta .btn { display: none !important; }
+  .hero { min-height: auto; padding: var(--space-8) 0; }
+  .hero__bg { background: var(--color-dark); }
+  body { background: #fff; color: #000; }
+  .footer { border-top: 1px solid #333; }
+}

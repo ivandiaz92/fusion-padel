@@ -1,0 +1,223 @@
+/* Fusion Padel - Components (prototype: header on hero, lime buttons) */
+
+/* Buttons: hover = lift, scale, glow; active = press */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-lg);
+  border: none;
+  transition: transform 0.25s var(--ease), background-color 0.25s ease, box-shadow 0.25s ease;
+}
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn--primary {
+  background: var(--color-lime);
+  color: var(--color-lime-text);
+}
+.btn--primary:hover {
+  background: var(--color-lime-hover);
+  box-shadow: 0 8px 28px rgba(161, 234, 3, 0.45), 0 4px 12px rgba(0,0,0,0.08);
+}
+.btn--primary:active {
+  box-shadow: 0 2px 12px rgba(161, 234, 3, 0.3);
+}
+
+.btn--dark {
+  background: var(--color-dark);
+  color: var(--color-text-on-dark);
+}
+.btn--dark:hover {
+  background: var(--color-dark-surface);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+.btn--outline:hover {
+  background: rgba(161, 234, 3, 0.12);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 16px rgba(161, 234, 3, 0.2);
+}
+
+.btn--lg { padding: var(--space-4) var(--space-8); font-size: var(--text-base); }
+.btn--full { width: 100%; }
+
+/* Pill / stadium shape for hero CTA */
+.btn--pill {
+  border-radius: 9999px;
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+}
+
+/* Header – same padding + container as hero so logo and hero text share the same left edge */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--header-height);
+  padding-inline: var(--container-padding);
+  background: transparent;
+  transition: background var(--duration), box-shadow var(--duration);
+  box-sizing: border-box;
+}
+.header--solid {
+  background: rgba(15, 18, 22, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  margin-inline: 0;
+  padding-inline: var(--container-padding);
+  padding-top: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* Logo: same left edge as hero text (header padding + inner padding = hero padding + hero content padding) */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.logo--header {
+  gap: 0;
+  margin-right: auto;
+  margin-left: 0;
+}
+.logo__img {
+  height: 3.25rem;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.logo--header .logo__img {
+  height: 3.5rem;
+}
+@media (min-width: 48em) {
+  .logo__img { height: 3.75rem; }
+  .logo--header .logo__img { height: 4.25rem; }
+}
+.logo__text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+@media (min-width: 48em) {
+  .logo__text { font-size: 1.75rem; }
+}
+
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: none;
+  color: var(--color-text-on-dark);
+  padding: 0;
+}
+@media (min-width: 64em) { .nav-toggle { display: none; } }
+
+.nav-toggle__bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: var(--radius-full);
+  transition: transform var(--duration), opacity var(--duration);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-dark);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity var(--duration), visibility var(--duration), transform var(--duration) var(--ease);
+}
+.nav.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+@media (min-width: 64em) {
+  .nav {
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    background: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    gap: var(--space-8);
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+@media (min-width: 64em) {
+  .nav__list { flex-direction: row; gap: var(--space-8); }
+}
+
+/* Menu: Thunder font, white, uppercase, slightly larger */
+.nav__list a {
+  font-family: 'Thunder', var(--font-display);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-transform: uppercase;
+  transition: color var(--duration);
+}
+@media (min-width: 48em) {
+  .nav__list a { font-size: 1rem; }
+}
+.nav__list a:hover { color: var(--color-lime); }
+
+@media (min-width: 64em) {
+  .nav__list { gap: var(--space-10); }
+}
