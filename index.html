@@ -68,13 +68,22 @@
         <span class="nav-toggle__bar"></span>
       </button>
       <nav id="nav-main" class="nav" aria-label="Navegación principal">
+        <div class="nav__top">
+          <a href="#" class="nav__logo" aria-label="Fusion Padel - Inicio">
+            <img src="images/logo.svg" alt="" width="82" height="60" class="nav__logo-img">
+          </a>
+        </div>
         <ul class="nav__list">
-          <li><a href="#instalaciones">INSTALACIONES</a></li>
-          <li><a href="#membresias">MEMBRESIAS</a></li>
-          <li><a href="#coaches">COACHES</a></li>
-          <li><a href="#contacto">CONTACTO</a></li>
+          <li class="nav__item" style="--i:0"><span class="nav__num">01</span><a href="#instalaciones">Instalaciones</a></li>
+          <li class="nav__item" style="--i:1"><span class="nav__num">02</span><a href="#membresias">Membresías</a></li>
+          <li class="nav__item" style="--i:2"><span class="nav__num">03</span><a href="#coaches">Coaches</a></li>
+          <li class="nav__item" style="--i:3"><span class="nav__num">04</span><a href="#contacto">Contacto</a></li>
         </ul>
+        <div class="nav__footer">
+          <a href="#contacto" class="nav__cta">ÚNETE AHORA</a>
+        </div>
       </nav>
+      <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
     </div>
   </header>
 

@@ -334,94 +334,44 @@
 }
 
 /* ========== Section divider – zigzag SVGs (desktop / mobile) ========== */
+
+/* Standalone divider (above Instalaciones) */
 .section-divider {
-  position: relative;
-  margin-top: 0;
-  margin-bottom: -2px;
-  overflow: visible;
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-bottom: -3px; /* seal sub-pixel gap against the section below */
+  padding: 0;
   line-height: 0;
   font-size: 0;
-  background: transparent;
+  overflow: hidden;
 }
 
-/* Standalone divider (e.g. above Instalaciones): force height from SVG aspect ratio so zigzag never collapses */
-.section-divider:not(.section-divider--in-banner) {
-  width: 100%;
-  aspect-ratio: 1700 / 181;
-  min-height: 100px;
-}
-.section-divider:not(.section-divider--in-banner) .section-divider__picture {
-  display: block;
-  width: 100%;
-  height: 100%;
-  line-height: 0;
-}
-.section-divider:not(.section-divider--in-banner) .section-divider__img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  vertical-align: top;
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-@media (max-width: 767px) {
-  .section-divider:not(.section-divider--in-banner) {
-    aspect-ratio: 882 / 130;
-    min-height: 70px;
-  }
-}
-
-/* In-banner divider (bottom of Class CTA): same SVG files, same aspect-ratio approach */
+/* In-banner divider (pinned to bottom of Class CTA, touching Coaches section) */
 .section-divider--in-banner {
   position: absolute;
-  bottom: 0;
+  bottom: -3px; /* overlap slightly into the section below to seal the seam */
   left: 0;
   right: 0;
-  margin: 0;
+  width: 100%;
   pointer-events: none;
   z-index: 2;
   line-height: 0;
   font-size: 0;
-  width: 100%;
-  aspect-ratio: 1700 / 181;
-  min-height: 120px;
-}
-.section-divider--in-banner .section-divider__picture {
-  display: block;
-  width: 100%;
-  height: 100%;
-  line-height: 0;
-}
-.section-divider--in-banner .section-divider__img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  vertical-align: top;
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-@media (max-width: 767px) {
-  .section-divider--in-banner {
-    aspect-ratio: 882 / 130;
-    min-height: 80px;
-  }
+  overflow: hidden;
 }
 
 .section-divider__picture {
-  display: block;
+  display: block; /* block removes any inline baseline gap */
   width: 100%;
   line-height: 0;
+  font-size: 0;
 }
 
 .section-divider__img {
-  display: block;
+  display: block; /* block removes the inline baseline gap (the main cause of the white strip) */
   width: 100%;
   height: auto;
-  vertical-align: top;
   border: 0;
   margin: 0;
   padding: 0;
@@ -536,16 +486,22 @@
 .instalaciones__thumbs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: 0.5rem;
   margin-top: var(--space-4);
-  padding: 0.5rem 0;
+  padding: 0;
   overflow: visible;
+}
+@media (min-width: 48em) {
+  .instalaciones__thumbs { gap: 1rem; }
 }
 
 .instalaciones__thumb {
-  padding: 0.75rem;
+  padding: 0;
   overflow: visible;
   min-width: 0;
+}
+@media (min-width: 48em) {
+  .instalaciones__thumb { padding: 0.5rem; }
 }
 
 .instalaciones__thumb img {
@@ -604,14 +560,14 @@
   display: block;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(3rem, 10vw, 4rem);
   color: var(--color-lime);
   line-height: 1.1;
   margin-bottom: var(--space-2);
 }
 
 .stat__label {
-  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-size: clamp(0.875rem, 2.5vw, 0.9375rem);
   color: rgba(255,255,255,0.85);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -634,14 +590,14 @@
 .membresias__title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--text-3xl);
+  font-size: clamp(2rem, 5vw, 3rem);
   color: var(--color-text);
   margin-bottom: var(--space-3);
   text-transform: uppercase;
   letter-spacing: -0.02em;
 }
 @media (min-width: 48em) {
-  .membresias__title { font-size: var(--text-4xl); }
+  .membresias__title { font-size: clamp(2.25rem, 5.5vw, 3.25rem); }
 }
 
 .membresias__intro {
@@ -784,7 +740,7 @@
 /* Consideraciones card – flush, full width; hover = shadow only */
 .consideraciones-card {
   background: var(--color-card-familiar);
-  padding: var(--space-8);
+  padding: var(--space-8) var(--space-6) var(--space-10);
   border-radius: 0;
   color: var(--color-text-on-dark);
   position: relative;
@@ -818,28 +774,36 @@
   font-weight: 700;
   font-size: var(--text-4xl);
   color: var(--color-lime);
-  margin-bottom: 0;
+  margin-bottom: var(--space-6);
   text-transform: uppercase;
   letter-spacing: 0.02em;
   text-align: left;
+  /* leave space for the absolute-positioned logo on mobile */
+  padding-right: 6rem;
+}
+@media (min-width: 36em) {
+  .consideraciones-card__title {
+    padding-right: 0;
+    margin-bottom: 0;
+  }
 }
 
 .consideraciones-card__list {
   list-style: none;
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-4);
   text-align: left;
   margin-inline: auto;
-  margin-top: -1.25rem;
+  margin-top: 0;
 }
 .consideraciones-card__list li {
   position: relative;
-  padding-left: 2rem;
-  margin-bottom: var(--space-2);
-  font-size: var(--text-lg);
+  padding-left: 2.25rem;
+  margin-bottom: 0;
+  font-size: var(--text-base);
   font-weight: 700;
   color: rgba(255,255,255,0.92);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 .consideraciones-card__list li:last-child { margin-bottom: 0; }
 .consideraciones-card__list li::before {
@@ -857,16 +821,17 @@
   line-height: 1.25rem;
   text-align: center;
 }
-/* Two-column layout for consideraciones lists on desktop */
+/* Two-column layout for consideraciones lists on tablet+ */
 @media (min-width: 36em) {
   .consideraciones-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     gap: 0 var(--space-8);
+    padding: var(--space-8);
   }
-  .consideraciones-card__title { grid-column: 1 / -1; margin-bottom: 0; }
-  .consideraciones-card__list { margin-top: -1.5rem; align-self: start; }
+  .consideraciones-card__title { grid-column: 1 / -1; }
+  .consideraciones-card__list { margin-top: 0; align-self: start; }
   .consideraciones-card__list--left { grid-column: 1; grid-row: 2; }
   .consideraciones-card__list--right { grid-column: 2; grid-row: 2; }
 }
@@ -1037,6 +1002,28 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* ── Mobile only: flip text-top card so photo is always on top ── */
+@media (max-width: 47.9375em) {
+  .coach-card--text-top {
+    display: flex;
+    flex-direction: column;
+  }
+  /* Push info box below the bottom block */
+  .coach-card--text-top .coach-card__info { order: 2; }
+  .coach-card--text-top .coach-card__bottom { order: 1; }
+  /* Within the bottom block, reverse so image comes first, bubble second */
+  .coach-card--text-top .coach-card__bottom {
+    flex-direction: column-reverse;
+  }
+  /* Override bubble to point upward (toward the photo now above it) */
+  .coach-card--text-top .coach-card__bubble--down {
+    border-width: 0 1rem 1.25rem 1rem;
+    border-color: transparent transparent #fff transparent;
+    margin-top: -1.25rem;
+    margin-bottom: 0;
+  }
 }
 
 /* Talking-bubble triangles (comic style) – white, pointing to the photo; tip overlaps image to hide gap */

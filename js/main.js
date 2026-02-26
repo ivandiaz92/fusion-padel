@@ -10,19 +10,24 @@
   var NAV_LINKS = document.querySelectorAll('.nav a[href^="#"]');
   var YEAR_EL = document.getElementById('year');
 
-  // Mobile nav
+  // Mobile nav: slide panel + overlay; overlay and link click close menu
+  var NAV_OVERLAY = document.getElementById('nav-overlay');
+  function closeNav() {
+    NAV.classList.remove('is-open');
+    if (NAV_OVERLAY) NAV_OVERLAY.classList.remove('is-open');
+    if (NAV_TOGGLE) NAV_TOGGLE.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
   if (NAV_TOGGLE && NAV) {
     NAV_TOGGLE.addEventListener('click', function () {
       var isOpen = NAV.classList.toggle('is-open');
+      if (NAV_OVERLAY) NAV_OVERLAY.classList.toggle('is-open', isOpen);
       NAV_TOGGLE.setAttribute('aria-expanded', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
+    if (NAV_OVERLAY) NAV_OVERLAY.addEventListener('click', closeNav);
     NAV_LINKS.forEach(function (link) {
-      link.addEventListener('click', function () {
-        NAV.classList.remove('is-open');
-        NAV_TOGGLE.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeNav);
     });
   }
 
