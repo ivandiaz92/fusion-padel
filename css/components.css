@@ -76,10 +76,26 @@
   transition: background var(--duration), box-shadow var(--duration);
   box-sizing: border-box;
 }
+/* backdrop-filter MUST be on a pseudo-element, NOT on the header itself.
+   If backdrop-filter is on a positioned ancestor, it creates a new containing block
+   for position:fixed children — which breaks the mobile nav panel. */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+  transition: -webkit-backdrop-filter var(--duration), backdrop-filter var(--duration);
+  pointer-events: none;
+}
 .header--solid {
   background: rgba(15, 18, 22, 0.92);
-  backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+.header--solid::before {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .header__inner {
